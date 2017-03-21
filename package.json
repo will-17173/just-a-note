@@ -1,0 +1,52 @@
+{
+    "name": "note2017",
+    "version": "1.0.0",
+    "description": "一个笔记",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/will-17173/start-kit.git"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node server",
+        "build": "webpack --config webpack.production.config.js --progress --profile --colors"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-cli": "^6.24.0",
+        "babel-core": "^6.24.0",
+        "babel-loader": "^6.4.1",
+        "babel-preset-env": "^1.2.2",
+        "babel-preset-es2015": "^6.24.0",
+        "cross-env": "^3.2.4",
+        "extract-text-webpack-plugin": "^2.1.0",
+        "glob": "^7.1.1",
+        "handlebars": "^4.0.6",
+        "handlebars-loader": "^1.4.0",
+        "jest": "^19.0.2",
+        "jshint": "^2.9.4",
+        "json-loader": "^0.5.4",
+        "mockjs": "^1.0.1-beta3",
+        "pomelo-logger": "^0.1.7",
+        "style-loader": "^0.14.1",
+        "webpack": "^2.2.1",
+        "webpack-body-parser": "^1.11.110",
+        "webpack-dev-middleware": "^1.10.1",
+        "webpack-dev-server": "^2.4.2",
+        "webpack-hot-middleware": "^2.17.1"
+    },
+    "dependencies": {
+        "consolidate": "^0.14.5",
+        "cookie-parser": "^1.4.3",
+        "express-session": "^1.15.1",
+        "express-static": "^1.1.0",
+        "method-override": "^2.3.7",
+        "moment": "^2.17.1",
+        "mongodb": "^2.2.25",
+        "mongoose": "^4.9.0",
+        "passport": "^0.3.2",
+        "passport-local": "^1.0.0"
+    }
+}
