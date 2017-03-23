@@ -37,7 +37,7 @@ var server = new WebpackDevServer(compiler, {
         app.engine('html', cons.handlebars);
         app.set('view engine', 'html');
 
-        app.use(serve(__dirname + '/src/public'));
+        app.use(serve(__dirname + '/dist/public'));
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({
             extended: true
@@ -45,7 +45,7 @@ var server = new WebpackDevServer(compiler, {
         app.use(methodOverride());
         app.use(cookieParser());
         app.use(session({
-            secret: 'note',
+            secret: 'note.onfocus.win',
             cookie: { maxAge: 6000000 }
         }));
         app.use(passport.initialize());

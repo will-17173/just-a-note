@@ -14,7 +14,7 @@ module.exports = {
     entry: entry,
     output: {
         filename: '[name].js',
-        path: './dist'
+        path: './dist/js'
     },
     externals: {
         'jquery': 'jQuery'

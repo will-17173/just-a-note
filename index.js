@@ -7,9 +7,12 @@ const cons = require('consolidate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const port = 10010;
 const db = require('./db.js');
+
+var app = express();
 
 var NoteSchema = new mongoose.Schema({
     date: Number,
@@ -19,11 +22,12 @@ var NoteSchema = new mongoose.Schema({
 var NoteModel = db.model('Note', NoteSchema);
 
 
-app.set('views', './src/');
+app.set('views', './dist/');
 app.engine('html', cons.handlebars);
 app.set('view engine', 'html');
 
-app.use(express.static(__dirname + '/src/public'));
+app.use(express.static(__dirname + '/dist/public'));
+app.use(express.static(__dirname + '/dist/js'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -31,7 +35,7 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(session({
-    secret: 'blog.fens.me',
+    secret: 'note.onfocus.win',
     cookie: { maxAge: 6000000 }
 }));
 app.use(passport.initialize());
@@ -64,14 +68,14 @@ app.all('/users', (req, res, next) => {
 });
 app.get('/users', (req, res) => {
     // res.render(path.join(__dirname, '/src/user.html'), { username: req.user.username });
-    res.render(path.join(__dirname, '/src/user.html'), { username: 'xxx' });
+    res.render(path.join(__dirname, '/dist/user.html'), { username: 'xxx' });
 })
 
 app.get('/', (req, res) => {
     if (req.isAuthenticated()) {
         res.redirect('/users');
     }
-    var file = path.join(__dirname, '/src/index.html');
+    var file = path.join(__dirname, '/dist/index.html');
     res.render(file);
 });
 
