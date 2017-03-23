@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
-const bodyParser = require('webpack-body-parser');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -45,7 +45,7 @@ var server = new WebpackDevServer(compiler, {
         app.use(methodOverride());
         app.use(cookieParser());
         app.use(session({
-            secret: 'blog.fens.me',
+            secret: 'note',
             cookie: { maxAge: 6000000 }
         }));
         app.use(passport.initialize());
@@ -54,10 +54,9 @@ var server = new WebpackDevServer(compiler, {
         passport.use('local', new LocalStrategy(
             function(username, password, done) {
                 var user = {
-                    id: '1',
                     username: 'a',
                     password: 'a'
-                }; // 可以配置通过数据库方式读取登陆账号
+                };
 
                 if (username !== user.username) {
                     return done(null, false, { message: 'Incorrect username.' });
