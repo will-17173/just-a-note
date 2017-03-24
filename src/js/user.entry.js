@@ -30,12 +30,12 @@ class List {
         })
     }
     get() {
-        $.get('/list', function(data) {
+        $.get('/note/list', function(data) {
             $('#list').html(tpl(data));
         })
     }
     doDelete() {
-        $.post('/delete', { id: this.id }, data => {
+        $.post('/note/delete', { id: this.id }, data => {
             if (data.result == 'success') {
                 $('[data-id=' + this.id + ']').remove();
                 this.id = null;
@@ -67,7 +67,7 @@ class List {
             return;
         }
         if (this.isNew) {
-            $.post('/save', { title: title, content: content }, data => {
+            $.post('/note/save', { title: title, content: content }, data => {
                 if (data.result == 'success') {
                     $('#myModal').modal('hide');
                     this.get();
@@ -76,7 +76,7 @@ class List {
                 }
             })
         } else if (this.isEdit) {
-            $.post('/save', { title: title, content: content, id: this.id }, data => {
+            $.post('/note/save', { title: title, content: content, id: this.id }, data => {
                 if (data.result == 'success') {
                     $('#myModal').modal('hide');
                     this.get();

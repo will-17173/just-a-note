@@ -9,6 +9,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node server",
+        "server": "node note-index",
         "build": "webpack --config webpack.production.config.js --progress --profile --colors"
     },
     "keywords": [],
