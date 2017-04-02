@@ -78,6 +78,9 @@ module.exports = function(app, isDev) {
     });
 
     app.get('/', (req, res) => {
+        if (/(iPhone|Android|iPod|iPad)/.test(navigator.userAgent)) {
+
+        }
         if (req.isAuthenticated()) {
             res.redirect('/users');
         }
